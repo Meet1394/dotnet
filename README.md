@@ -105,6 +105,3 @@ dotnet user-secrets set "Supabase:Key" "YOUR_SUPABASE_KEY" --project .\PersonalC
 
 ## License
 This project does not currently include a license file. Add a `LICENSE` file if you want to publish a license.
-
-## Contact
-P
