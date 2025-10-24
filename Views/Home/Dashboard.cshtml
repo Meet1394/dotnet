@@ -1,0 +1,302 @@
+@model PersonalCloudDrive.Models.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<style>
+    .dashboard-header {
+        margin-bottom: 2rem;
+    }
+
+    .dashboard-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-card {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary-color);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+    }
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .stat-label {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+    }
+
+    .storage-card {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .storage-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .storage-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .storage-text {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+
+    .progress {
+        height: 12px;
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        transition: width 0.6s ease;
+    }
+
+    .recent-files-card {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    .file-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        background: rgba(15, 23, 42, 0.4);
+        border-radius: 10px;
+        margin-bottom: 0.75rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .file-item:hover {
+        background: rgba(15, 23, 42, 0.6);
+        transform: translateX(5px);
+    }
+
+    .file-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .file-info {
+        flex: 1;
+    }
+
+    .file-name {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+    }
+
+    .file-meta {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+    }
+
+    .quick-actions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .action-btn {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        text-decoration: none;
+        color: var(--text-primary);
+        transition: all 0.3s ease;
+        display: block;
+    }
+
+    .action-btn:hover {
+        background: rgba(30, 41, 59, 0.8);
+        border-color: var(--primary-color);
+        color: var(--text-primary);
+        transform: translateY(-3px);
+    }
+
+    .action-btn i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        display: block;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+</style>
+
+<div class="dashboard-header">
+    <h1 class="dashboard-title">Welcome back, @Model.UserName! 👋</h1>
+    <p style="color: var(--text-secondary); font-size: 1.1rem;">
+        Here's an overview of your cloud storage
+    </p>
+</div>
+
+<div class="quick-actions">
+    <a href="/File/Manager" class="action-btn">
+        <i class="fas fa-folder-open"></i>
+        <div>My Files</div>
+    </a>
+    <a href="/File/Manager" class="action-btn">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <div>Upload Files</div>
+    </a>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-file"></i>
+            </div>
+            <div class="stat-label">Total Files</div>
+            <div class="stat-value">@Model.TotalFiles</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-folder"></i>
+            </div>
+            <div class="stat-label">Total Folders</div>
+            <div class="stat-value">@Model.TotalFolders</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-database"></i>
+            </div>
+            <div class="stat-label">Storage Used</div>
+            <div class="stat-value">@Model.StorageUsed.ToString("F2") MB</div>
+        </div>
+    </div>
+</div>
+
+<div class="storage-card">
+    <div class="storage-header">
+        <div>
+            <div class="storage-title">Storage Usage</div>
+            <div class="storage-text">
+                @Model.StorageUsed.ToString("F2") MB of @Model.StorageLimit MB used
+            </div>
+        </div>
+        <div>
+            @{
+                var percentage = Model.StorageLimit > 0 ? (Model.StorageUsed / Model.StorageLimit * 100) : 0;
+            }
+            <strong>@percentage.ToString("F1")%</strong>
+        </div>
+    </div>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: @percentage%"></div>
+    </div>
+</div>
+
+<div class="recent-files-card">
+    <h3 class="section-title">
+        <i class="fas fa-clock"></i> Recent Files
+    </h3>
+    
+    @if (Model.RecentFiles.Any())
+    {
+        @foreach (var file in Model.RecentFiles)
+        {
+            <div class="file-item" onclick="window.location.href='/File/Download/@file.Id'">
+                <div class="file-icon">
+                    @{
+                        var icon = file.FileType switch
+                        {
+                            ".pdf" => "fa-file-pdf",
+                            ".doc" or ".docx" => "fa-file-word",
+                            ".xls" or ".xlsx" => "fa-file-excel",
+                            ".jpg" or ".jpeg" or ".png" or ".gif" => "fa-file-image",
+                            ".zip" or ".rar" => "fa-file-archive",
+                            ".mp4" or ".avi" or ".mov" => "fa-file-video",
+                            ".mp3" or ".wav" => "fa-file-audio",
+                            _ => "fa-file"
+                        };
+                    }
+                    <i class="fas @icon"></i>
+                </div>
+                <div class="file-info">
+                    <div class="file-name">@file.FileName</div>
+                    <div class="file-meta">
+                        @((file.FileSize / 1024.0 / 1024.0).ToString("F2")) MB • 
+                        @file.UploadedOn.ToString("MMM dd, yyyy")
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+            <i class="fas fa-inbox" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+            <p>No files uploaded yet</p>
+            <a href="/File/Manager" class="btn btn-primary mt-2">
+                <i class="fas fa-upload"></i> Upload Your First File
+            </a>
+        </div>
+    }
+</div>
