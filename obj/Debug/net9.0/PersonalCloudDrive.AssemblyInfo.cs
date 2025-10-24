@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PersonalCloudDrive")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f79775916014ab16cc4ee96c92cc345fbd5972aa")]
 [assembly: System.Reflection.AssemblyProductAttribute("PersonalCloudDrive")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PersonalCloudDrive")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
