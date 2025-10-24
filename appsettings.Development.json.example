@@ -1,0 +1,7 @@
+{
+  "Supabase": {
+    "Url": "https://your-project.supabase.co",
+    "Key": "YOUR_SUPABASE_KEY",
+    "BucketName": "cloud-drive-files"
+  }
+}
