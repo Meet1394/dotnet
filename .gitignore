@@ -60,3 +60,7 @@ msbuild.wrn
 appsettings.*.json
 !appsettings.json
 !appsettings.Example.json
+bin/
+obj/
+*.user
+*.suo
