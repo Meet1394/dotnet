@@ -107,11 +107,4 @@ dotnet user-secrets set "Supabase:Key" "YOUR_SUPABASE_KEY" --project .\PersonalC
 This project does not currently include a license file. Add a `LICENSE` file if you want to publish a license.
 
 ## Contact
-Project: https://github.com/Meet1394/dotnet
-
----
-
-If you'd like, I can also:
-- Add a sample `appsettings.Development.json.example` with the keys shown above (safe stub values),
-- Add a small PowerShell script `run-local.ps1` that sets env vars from a `.env` file and runs the app,
-- Or run `dotnet build` now and share the exact build output.
+P
